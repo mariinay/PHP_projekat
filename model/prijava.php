@@ -57,7 +57,7 @@ class Prijava{
 
     public static function add(Prijava $prijava, mysqli $conn)
     {
-        $query = "INSERT INTO prijave(teretana, lokacija, datum, vreme) VALUES('$prijava->teretana', '$prijava->lokacija','$prijava->datum', '$prijava->vreme')";
+        $query = "INSERT INTO prijave(teretana, lokacija, datum, vreme) VALUES('$prijava->teretana','$prijava->lokacija','$prijava->datum','$prijava->vreme')";
         return $conn->query($query);
     }
 }
