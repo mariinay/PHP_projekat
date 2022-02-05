@@ -1,12 +1,13 @@
 <?php
-class Prijava{
-    public $id;   
-    public $teretana;  
-    public $lokacija; 
-    public $datum;     
+class Prijava
+{
+    public $id;
+    public $teretana;
+    public $lokacija;
+    public $datum;
     public $vreme;
-    
-    public function __construct($id=null, $teretana=null, $lokacija=null, $datum=null, $vreme=null)
+
+    public function __construct($id = null, $teretana = null, $lokacija = null, $datum = null, $vreme = null)
     {
         $this->id = $id;
         $this->teretana = $teretana;
@@ -24,22 +25,22 @@ class Prijava{
 
 
 
-  
-    public static function getById($id, mysqli $conn){
+
+    public static function getById($id, mysqli $conn)
+    {
         $query = "SELECT * FROM prijave WHERE id=$id";
 
         $myObj = array();
-        if($msqlObj = $conn->query($query)){
-            while($red = $msqlObj->fetch_array(1)){
-                $myObj[]= $red;
+        if ($msqlObj = $conn->query($query)) {
+            while ($red = $msqlObj->fetch_array(1)) {
+                $myObj[] = $red;
             }
         }
 
         return $myObj;
-
     }
 
-  
+
 
     public function deleteById(mysqli $conn)
     {
@@ -48,9 +49,9 @@ class Prijava{
     }
 
 
-    public function update($id, mysqli $conn)
+    public static function update(Prijava $prijava, mysqli $conn)
     {
-        $query = "UPDATE prijave set teretana = $this->teretana, lokacija = $this->lokacija, datum = $this->datum, vreme = $this->vreme WHERE id=$id";
+        $query = "UPDATE prijave set teretana = '$prijava->teretana', lokacija = '$prijava->lokacija', datum = '$prijava->datum', vreme = '$prijava->vreme' WHERE id='$prijava->id'";
         return $conn->query($query);
     }
 
@@ -61,5 +62,3 @@ class Prijava{
         return $conn->query($query);
     }
 }
-
-?>
