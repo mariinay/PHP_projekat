@@ -12,5 +12,3 @@ if(isset($_POST['id'])){
         echo "Failed";
     }
 }
-
-?>

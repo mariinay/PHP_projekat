@@ -53,6 +53,11 @@ if (!$rezultat) {
 
             </div>
 
+            <div class="div4">
+                <button id="btn-izmeni" type="button" class="btn_izmeni" data-toggle="modal" data-target="#izmeniModal">Izmeni</button>
+
+            </div>
+
             <div class="div5">
 
                 <input type="text" id="ulaz" onkeyup="nadji()" placeholder="Pretraži treninge po teretani">
@@ -178,9 +183,67 @@ if (!$rezultat) {
         </div>
 
 
+        <div class="modal" id="izmeniModal" role="dialog">
+            <div class="div12">
+
+
+                <div class="modal-content" id="izmeni">
+                    <div class="div14">
+                        <button type="button" class="zatvori" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="div15">
+                        <div class="fprijava">
+                            <form action="#" method="post" id="izmeniForm">
+                                <h3>Izmeni</h3>
+                                <div class="row">
+                                    <div class="div16 ">
+
+                                        <div class="form-group">
+                                            <label for="">ID: </label>
+                                            <input id="id" type="text" name="naziv" class="form-control" />
+                                        </div><br>
+
+                                        <div class="form-group">
+                                            <label for="">Teretana: </label>
+                                            <input id="teretana" type="text" name="naziv" class="form-control" />
+                                        </div><br>
+
+                                        <div class="form-group">
+                                            <label for="mesto">Lokacija: </label>
+                                            <input id="lokacija" type="text" name="lokacija" class="form-control" />
+                                        </div><br>
+
+                                        <div class="div18">
+                                            <div class="form-group">
+                                                <label for="">Datum: </label>
+                                                <input id="datum" type="date" name="datum" class="form-control" />
+                                            </div>
+                                        </div><br>
+
+
+                                        <div class="form-group">
+                                            <label for="">Vreme: </label>
+                                            <input id="vreme" type="time" name="vreme" class="form-control" />
+                                        </div><br>
+
+                                        <div class="form-group">
+                                            <button id="btnIzmeni" type="submit" class="btn btn-success btn-block">Izmeni</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="js/main.js"></script>
+        <script src="js/code.js"></script>
 
 
 
