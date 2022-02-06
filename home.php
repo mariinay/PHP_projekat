@@ -3,6 +3,7 @@
 require "dbBroker.php";
 require "model/prijava.php";
 
+
 session_start();
 
 if (!isset($_SESSION['user_id'])) {
@@ -33,7 +34,7 @@ if (!$rezultat) {
         <link rel="shortcut icon">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="css/home.css">
-        <title>NON STOP Fitness: Zakazivanje treninga</title>
+        <title>FitPass: Zakazivanje treninga</title>
 
     </head>
 
@@ -51,9 +52,7 @@ if (!$rezultat) {
             <div class="div4">
                 <button id="prijavise" type="button" class="btn_prijavise" data-toggle="modal" data-target="#prikaziModal">Zakaži</button>
 
-            </div>
 
-            <div class="div4">
                 <button id="btn-izmeni" type="button" class="btn_izmeni" data-toggle="modal" data-target="#izmeniModal">Izmeni</button>
 
             </div>
@@ -89,21 +88,23 @@ if (!$rezultat) {
                     <tbody>
                         <?php
                         while ($red = $rezultat->fetch_array()) :
+                            if ($red["user"] == $_SESSION['user_id']) {
                         ?>
-                            <tr>
-                                <td><?php echo $red["teretana"] ?></td>
-                                <td><?php echo $red["lokacija"] ?></td>
-                                <td><?php echo $red["datum"] ?></td>
-                                <td><?php echo $red["vreme"] ?></td>
-                                <td>
-                                    <label class="oznaci">
-                                        <input type="radio" name="cekiranje" value=<?php echo $red["id"] ?>>
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </td>
+                                <tr>
+                                    <td><?php echo $red["teretana"] ?></td>
+                                    <td><?php echo $red["lokacija"] ?></td>
+                                    <td><?php echo $red["datum"] ?></td>
+                                    <td><?php echo $red["vreme"] ?></td>
+                                    <td>
+                                        <label class="oznaci">
+                                            <input type="radio" name="cekiranje" value=<?php echo $red["id"] ?>>
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </td>
 
-                            </tr>
+                                </tr>
                     <?php
+                            };
                         endwhile;
                     }
                     ?>
@@ -200,7 +201,7 @@ if (!$rezultat) {
 
                                         <div class="form-group">
                                             <label for="">ID: </label>
-                                            <input id="id" type="text" name="naziv" class="form-control" />
+                                            <input id="id" type="text" name="id" class="form-control" />
                                         </div><br>
 
                                         <div class="form-group">
@@ -260,8 +261,8 @@ if (!$rezultat) {
                     rows = table.rows;
                     for (i = 1; i < (rows.length - 1); i++) {
                         shouldS = false;
-                        a = rows[i].getElementsByTagName("td")[1];
-                        b = rows[i + 1].getElementsByTagName("td")[1];
+                        a = rows[i].getElementsByTagName("td")[2];
+                        b = rows[i + 1].getElementsByTagName("td")[2];
                         if (a.innerHTML.toLowerCase() > b.innerHTML.toLowerCase()) {
                             shouldS = true;
                             break;

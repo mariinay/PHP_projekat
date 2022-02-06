@@ -6,14 +6,16 @@ class Prijava
     public $lokacija;
     public $datum;
     public $vreme;
+    public $user;
 
-    public function __construct($id = null, $teretana = null, $lokacija = null, $datum = null, $vreme = null)
+    public function __construct($id = null, $teretana = null, $lokacija = null, $datum = null, $vreme = null, $user = null)
     {
         $this->id = $id;
         $this->teretana = $teretana;
         $this->lokacija = $lokacija;
         $this->datum = $datum;
         $this->vreme = $vreme;
+        $this->user = $user;
     }
 
 
@@ -58,7 +60,7 @@ class Prijava
 
     public static function add(Prijava $prijava, mysqli $conn)
     {
-        $query = "INSERT INTO prijave(teretana, lokacija, datum, vreme) VALUES('$prijava->teretana','$prijava->lokacija','$prijava->datum','$prijava->vreme')";
+        $query = "INSERT INTO prijave(teretana, lokacija, datum, vreme, user) VALUES('$prijava->teretana','$prijava->lokacija','$prijava->datum','$prijava->vreme','$prijava->user')";
         return $conn->query($query);
     }
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 25, 2021 at 01:26 PM
+-- Generation Time: Feb 05, 2022 at 11:54 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.13
 
@@ -29,12 +29,23 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `prijave` (
   `id` int(11) NOT NULL,
-  `ime` varchar(20) NOT NULL,
-  `prezime` varchar(20) NOT NULL,
-  `lokacija` varchar(30) NOT NULL,
+  `teretana` varchar(20) NOT NULL,
+  `lokacija` varchar(20) NOT NULL,
   `datum` date NOT NULL,
-  `vreme` time NOT NULL
+  `vreme` time NOT NULL,
+  `user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `prijave`
+--
+
+INSERT INTO `prijave` (`id`, `teretana`, `lokacija`, `datum`, `vreme`, `user`) VALUES
+(1, 'NSF', 'Autokomanda', '2022-02-22', '19:00:00', 3),
+(2, 'Ahilej', 'Južni bulevar', '2022-03-11', '20:00:00', 2),
+(3, 'NSF', 'Vojislava Ilića', '2022-02-27', '15:30:00', 3),
+(4, 'Spektra', 'Zemun', '2022-02-19', '10:00:00', 2),
+(5, 'Ahilej', 'Autokomanda', '2022-02-18', '11:00:00', 3);
 
 -- --------------------------------------------------------
 
@@ -53,7 +64,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`) VALUES
-(1, '', 'admin');
+(2, 'admin', 'admin'),
+(3, 'marina', 'marina');
 
 --
 -- Indexes for dumped tables
@@ -79,13 +91,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `prijave`
 --
 ALTER TABLE `prijave`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

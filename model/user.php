@@ -1,11 +1,12 @@
 <?php
 
-class User{
+class User
+{
     public $id;
     public $username;
     public $password;
 
-    public function __construct($id=null,$username=null,$password=null)
+    public function __construct($id = null, $username = null, $password = null)
     {
         $this->id = $id;
         $this->username = $username;
@@ -14,7 +15,7 @@ class User{
 
     public static function logInUser($usr, mysqli $conn)
     {
-        $query = "SELECT * FROM user WHERE username='$usr->username' and password='$usr->password'";
+        $query = "SELECT * FROM user WHERE username='$usr->username' and password='$usr->password' LIMIT 1";
 
         return $conn->query($query);
     }

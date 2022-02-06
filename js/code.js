@@ -17,6 +17,8 @@ $('#dodajForm').submit(function(){
 
     request.done(function(response, textStatus, jqXHR){
 
+        console.log(response);
+
         
         if(response == "Success"){
             alert("Trening uspešno zakazan");
